@@ -1,0 +1,6 @@
+module Pods_Pinvite_PinviteTests {
+  umbrella header "Pods-Pinvite-PinviteTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
