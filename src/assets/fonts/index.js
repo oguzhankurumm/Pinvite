@@ -1,0 +1,9 @@
+// export const thinText = 'Urbanist-Thin'
+// export const extraLightText = 'Urbanist-ExtraLight'
+// export const lightText = 'Urbanist-Light';
+// export const regularText = 'Urbanist-REgular';
+// export const mediumText = 'Urbanist-Medium';
+// export const semiboldText = 'Urbanist-SemiBold';
+// export const boldText = 'Urbanist-Bold';
+// export const extraBoldText = 'Urbanist-ExtraBold';
+// export const blackText = 'Urbanist-Black';
