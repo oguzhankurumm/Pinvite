@@ -1,22 +1,12 @@
-// import { combineReducers } from "redux";
-// import authReducer from './reducers/auth';
-// import adsReducer from "./reducers/ads";
-// import conversationsReducer from "./reducers/conversations";
-// import messagesReducer from "./reducers/messages";
-// import friendsReducer from './reducers/friends';
-// import walletReducer from "./reducers/wallet";
-// import roundsReducer from "./reducers/rounds";
-// import shopReducer from "./reducers/shop";
+import { combineReducers } from "redux";
+import authReducer from './reducers/auth';
+import userReducer from './reducers/user';
+import postsReducer from './reducers/posts';
 
-// const rootReducer = combineReducers({
-//     authReducer,
-//     adsReducer,
-//     conversationsReducer,
-//     messagesReducer,
-//     friendsReducer,
-//     walletReducer,
-//     roundsReducer,
-//     shopReducer
-// })
+const rootReducer = combineReducers({
+    authReducer,
+    userReducer,
+    postsReducer
+})
 
-// export default rootReducer;
+export default rootReducer;

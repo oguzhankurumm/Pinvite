@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "594161838195",
+    "project_id": "pinvite-c4182",
+    "storage_bucket": "pinvite-c4182.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594161838195:android:a88ab64dc075b4cd98a206",
+        "android_client_info": {
+          "package_name": "com.pinvite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "594161838195-d15q80osbrr4gfcrdm8jn6n5sqsf4ou0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pinvite",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "594161838195-qt8to7em162kd3o0evttplfmrgroe4ar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEe632OdHezKkmh9VV_xaiqgDA1EruFQw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "594161838195-qt8to7em162kd3o0evttplfmrgroe4ar.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "594161838195-2t22mka1elgutvsiuk6f8jqdr3vmacr5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pinvite.pinviteapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

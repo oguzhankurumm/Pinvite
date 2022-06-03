@@ -1,12 +1,23 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { LogBox, StatusBar } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+import LoadingModal from './src/modals/LoadingModal';
+import Route from './src/navigation/main';
+import store from './src/redux/store';
 
 const App = () => {
+  LogBox.ignoreAllLogs(true);
+
   return (
-    <View>
-      <Text>Hello from Home!</Text>
-    </View>
-  )
+    <SafeAreaProvider>
+      <StatusBar barStyle='dark-content' />
+      <Provider store={store}>
+        <LoadingModal />
+        <Route />
+      </Provider>
+    </SafeAreaProvider>
+  );
 }
 
 export default App;

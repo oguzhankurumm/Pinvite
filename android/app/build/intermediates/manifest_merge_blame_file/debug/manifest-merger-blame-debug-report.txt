@@ -1,0 +1,202 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.pinvite"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="31" />
+10
+11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+11-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/debug/AndroidManifest.xml:5:5-77
+11-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/debug/AndroidManifest.xml:5:22-75
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:3:3-65
+12-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:3:20-62
+13    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+13-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:4:3-83
+13-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:4:20-80
+14    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+14-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:5:3-79
+14-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:5:20-76
+15    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+15-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:6:3-77
+15-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:6:20-74
+16    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+16-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:7:3-78
+16-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:7:20-75
+17    <uses-permission android:name="android.permission.CAMERA" />
+17-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:8:3-63
+17-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:8:20-60
+18    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+18-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:9:3-78
+18-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:9:20-75
+19    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+19-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:10:3-69
+19-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:10:20-66
+20    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+20-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:11:3-79
+20-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:11:20-76
+21    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+21-->[com.facebook.flipper:flipper:0.125.0] /Users/oguzhankurum/.gradle/caches/transforms-3/b24649aa5fbdef18d352a14cc6c09833/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:16:5-76
+21-->[com.facebook.flipper:flipper:0.125.0] /Users/oguzhankurum/.gradle/caches/transforms-3/b24649aa5fbdef18d352a14cc6c09833/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:16:22-73
+22
+23    <application
+23-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:12:5-31:19
+24        android:name="com.pinvite.MainApplication"
+24-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:13:7-38
+25        android:allowBackup="false"
+25-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:17:7-34
+26        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+26-->[androidx.core:core:1.6.0] /Users/oguzhankurum/.gradle/caches/transforms-3/5a71c8c3af7d887598359e23d5b6b787/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+27        android:debuggable="true"
+28        android:icon="@mipmap/ic_launcher"
+28-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:15:7-41
+29        android:label="@string/app_name"
+29-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:14:7-39
+30        android:roundIcon="@mipmap/ic_launcher_round"
+30-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:16:7-52
+31        android:theme="@style/AppTheme"
+31-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:18:7-38
+32        android:usesCleartextTraffic="true" >
+32-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/debug/AndroidManifest.xml:8:9-44
+33        <activity
+33-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/debug/AndroidManifest.xml:11:9-111
+34            android:name="com.facebook.react.devsupport.DevSettingsActivity"
+34-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/debug/AndroidManifest.xml:11:19-83
+35            android:exported="false" />
+35-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/debug/AndroidManifest.xml:11:84-108
+36        <activity
+36-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:19:7-30:18
+37            android:name="com.pinvite.MainActivity"
+37-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:20:9-37
+38            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+38-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:22:9-118
+39            android:exported="true"
+39-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:25:9-32
+40            android:label="@string/app_name"
+40-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:21:9-41
+41            android:launchMode="singleTask"
+41-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:23:9-40
+42            android:windowSoftInputMode="adjustResize" >
+42-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:24:9-51
+43            <intent-filter>
+43-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:26:9-29:25
+44                <action android:name="android.intent.action.MAIN" />
+44-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:27:13-65
+44-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:27:21-62
+45
+46                <category android:name="android.intent.category.LAUNCHER" />
+46-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:28:13-73
+46-->/Users/oguzhankurum/Desktop/Projeler/Pinvite/android/app/src/main/AndroidManifest.xml:28:23-70
+47            </intent-filter>
+48        </activity>
+49
+50        <meta-data
+50-->[:react-native-firebase_app] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-12:36
+51            android:name="app_data_collection_default_enabled"
+51-->[:react-native-firebase_app] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-63
+52            android:value="true" />
+52-->[:react-native-firebase_app] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-33
+53
+54        <service
+54-->[:react-native-firebase_app] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:9-18:19
+55            android:name="com.google.firebase.components.ComponentDiscoveryService"
+55-->[:react-native-firebase_app] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:18-89
+56            android:directBootAware="true"
+56-->[com.google.firebase:firebase-common:20.1.1] /Users/oguzhankurum/.gradle/caches/transforms-3/90b0264a270d302f6511f9161eff0e3e/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:35:13-43
+57            android:exported="false" >
+57-->[com.google.firebase:firebase-common:20.1.1] /Users/oguzhankurum/.gradle/caches/transforms-3/90b0264a270d302f6511f9161eff0e3e/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:36:13-37
+58            <meta-data
+58-->[:react-native-firebase_app] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-17:85
+59                android:name="com.google.firebase.components:io.invertase.firebase.app.ReactNativeFirebaseAppRegistrar"
+59-->[:react-native-firebase_app] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:17-120
+60                android:value="com.google.firebase.components.ComponentRegistrar" />
+60-->[:react-native-firebase_app] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:17-82
+61        </service>
+62
+63        <provider
+63-->[:react-native-firebase_app] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:9-24:38
+64            android:name="io.invertase.firebase.app.ReactNativeFirebaseAppInitProvider"
+64-->[:react-native-firebase_app] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-88
+65            android:authorities="com.pinvite.reactnativefirebaseappinitprovider"
+65-->[:react-native-firebase_app] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-86
+66            android:exported="false"
+66-->[:react-native-firebase_app] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-37
+67            android:initOrder="99" />
+67-->[:react-native-firebase_app] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-35
+68        <provider
+68-->[:react-native-webview] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-18:20
+69            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
+69-->[:react-native-webview] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-83
+70            android:authorities="com.pinvite.fileprovider"
+70-->[:react-native-webview] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-64
+71            android:exported="false"
+71-->[:react-native-webview] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-37
+72            android:grantUriPermissions="true" >
+72-->[:react-native-webview] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-47
+73            <meta-data
+73-->[:react-native-webview] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-17:63
+74                android:name="android.support.FILE_PROVIDER_PATHS"
+74-->[:react-native-webview] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:17-67
+75                android:resource="@xml/file_provider_paths" />
+75-->[:react-native-webview] /Users/oguzhankurum/Desktop/Projeler/Pinvite/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:17-60
+76        </provider>
+77
+78        <activity
+78-->[com.google.android.gms:play-services-auth:20.1.0] /Users/oguzhankurum/.gradle/caches/transforms-3/85248a897a1c60a468c4eab6b47c6ef1/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:23:9-27:75
+79            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+79-->[com.google.android.gms:play-services-auth:20.1.0] /Users/oguzhankurum/.gradle/caches/transforms-3/85248a897a1c60a468c4eab6b47c6ef1/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:24:13-93
+80            android:excludeFromRecents="true"
+80-->[com.google.android.gms:play-services-auth:20.1.0] /Users/oguzhankurum/.gradle/caches/transforms-3/85248a897a1c60a468c4eab6b47c6ef1/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:25:13-46
+81            android:exported="false"
+81-->[com.google.android.gms:play-services-auth:20.1.0] /Users/oguzhankurum/.gradle/caches/transforms-3/85248a897a1c60a468c4eab6b47c6ef1/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:26:13-37
+82            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+82-->[com.google.android.gms:play-services-auth:20.1.0] /Users/oguzhankurum/.gradle/caches/transforms-3/85248a897a1c60a468c4eab6b47c6ef1/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:27:13-72
+83        <!--
+84            Service handling Google Sign-In user revocation. For apps that do not integrate with
+85            Google Sign-In, this service will never be started.
+86        -->
+87        <service
+87-->[com.google.android.gms:play-services-auth:20.1.0] /Users/oguzhankurum/.gradle/caches/transforms-3/85248a897a1c60a468c4eab6b47c6ef1/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:33:9-37:51
+88            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+88-->[com.google.android.gms:play-services-auth:20.1.0] /Users/oguzhankurum/.gradle/caches/transforms-3/85248a897a1c60a468c4eab6b47c6ef1/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:34:13-89
+89            android:exported="true"
+89-->[com.google.android.gms:play-services-auth:20.1.0] /Users/oguzhankurum/.gradle/caches/transforms-3/85248a897a1c60a468c4eab6b47c6ef1/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:35:13-36
+90            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+90-->[com.google.android.gms:play-services-auth:20.1.0] /Users/oguzhankurum/.gradle/caches/transforms-3/85248a897a1c60a468c4eab6b47c6ef1/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:36:13-107
+91            android:visibleToInstantApps="true" />
+91-->[com.google.android.gms:play-services-auth:20.1.0] /Users/oguzhankurum/.gradle/caches/transforms-3/85248a897a1c60a468c4eab6b47c6ef1/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:37:13-48
+92
+93        <activity
+93-->[com.google.android.gms:play-services-base:18.0.1] /Users/oguzhankurum/.gradle/caches/transforms-3/a7da0ffaf9626d3a8436822864204695/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+94            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+94-->[com.google.android.gms:play-services-base:18.0.1] /Users/oguzhankurum/.gradle/caches/transforms-3/a7da0ffaf9626d3a8436822864204695/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+95            android:exported="false"
+95-->[com.google.android.gms:play-services-base:18.0.1] /Users/oguzhankurum/.gradle/caches/transforms-3/a7da0ffaf9626d3a8436822864204695/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+96            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+96-->[com.google.android.gms:play-services-base:18.0.1] /Users/oguzhankurum/.gradle/caches/transforms-3/a7da0ffaf9626d3a8436822864204695/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+97
+98        <provider
+98-->[com.google.firebase:firebase-common:20.1.1] /Users/oguzhankurum/.gradle/caches/transforms-3/90b0264a270d302f6511f9161eff0e3e/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:26:9-31:39
+99            android:name="com.google.firebase.provider.FirebaseInitProvider"
+99-->[com.google.firebase:firebase-common:20.1.1] /Users/oguzhankurum/.gradle/caches/transforms-3/90b0264a270d302f6511f9161eff0e3e/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:27:13-77
+100            android:authorities="com.pinvite.firebaseinitprovider"
+100-->[com.google.firebase:firebase-common:20.1.1] /Users/oguzhankurum/.gradle/caches/transforms-3/90b0264a270d302f6511f9161eff0e3e/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:28:13-72
+101            android:directBootAware="true"
+101-->[com.google.firebase:firebase-common:20.1.1] /Users/oguzhankurum/.gradle/caches/transforms-3/90b0264a270d302f6511f9161eff0e3e/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:29:13-43
+102            android:exported="false"
+102-->[com.google.firebase:firebase-common:20.1.1] /Users/oguzhankurum/.gradle/caches/transforms-3/90b0264a270d302f6511f9161eff0e3e/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:30:13-37
+103            android:initOrder="100" />
+103-->[com.google.firebase:firebase-common:20.1.1] /Users/oguzhankurum/.gradle/caches/transforms-3/90b0264a270d302f6511f9161eff0e3e/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:31:13-36
+104
+105        <meta-data
+105-->[com.google.android.gms:play-services-basement:18.0.0] /Users/oguzhankurum/.gradle/caches/transforms-3/6dadbc8dcf8ca64485f05cdeae89eefb/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+106            android:name="com.google.android.gms.version"
+106-->[com.google.android.gms:play-services-basement:18.0.0] /Users/oguzhankurum/.gradle/caches/transforms-3/6dadbc8dcf8ca64485f05cdeae89eefb/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
+107            android:value="@integer/google_play_services_version" />
+107-->[com.google.android.gms:play-services-basement:18.0.0] /Users/oguzhankurum/.gradle/caches/transforms-3/6dadbc8dcf8ca64485f05cdeae89eefb/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
+108    </application>
+109
+110</manifest>
