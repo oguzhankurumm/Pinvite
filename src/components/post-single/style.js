@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import { white } from '../../assets/colors';
-import { boldText, mediumText, regularText } from '../../assets/fonts';
+import { regularText } from '../../assets/fonts';
 
 const styles = StyleSheet.create({
     container: {

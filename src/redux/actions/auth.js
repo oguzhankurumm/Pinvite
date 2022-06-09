@@ -17,6 +17,9 @@ import {
     UPDATE_PROFILE_START,
     UPDATE_PROFILE_SUCCESS,
     UPDATE_PROFILE_FAILED,
+    UPDATE_LOCATION_START,
+    UPDATE_LOCATION_SUCCESS,
+    UPDATE_LOCATION_FAILED,
 } from '../constants/auth';
 import auth from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -37,7 +40,7 @@ export const userAuthStateListener = () => async dispatch => {
                 const userData = await getUserData(userId);
                 const getFollowingsUsers = await getFollowings(userId);
                 await dispatch(getFollowers(userId));
-                if(getFollowingsUsers.length > 0) {
+                if (getFollowingsUsers.length > 0) {
                     await dispatch(setFollowings(getFollowingsUsers));
                     await dispatch(getFollowingUserPosts(getFollowingsUsers));
                 }
@@ -129,5 +132,20 @@ export const updateProfile = ({ data, userId }) => async dispatch => {
         }
     } catch (error) {
         await dispatch({ type: UPDATE_PROFILE_FAILED, message: 'Profile can not be updated. Please try again later.' });
+    }
+}
+
+export const updateCurrentLocation = ({ location, userId }) => async dispatch => {
+    try {
+        await dispatch({ type: UPDATE_LOCATION_START });
+        const { latitude, longitude } = location;
+        const response = await axios.put(`${BASE_URL}/auth/updateLocation?id=${userId}`, { latitude, longitude });
+        if (response.status === 200) {
+            await dispatch({ type: UPDATE_LOCATION_SUCCESS, location: response.data.location, message: response.data.message });
+        } else {
+            await dispatch({ type: UPDATE_LOCATION_FAILED, message: 'Location can not be updated. Please try again later.' });
+        }
+    } catch (error) {
+        await dispatch({ type: UPDATE_LOCATION_FAILED, message: 'Location can not be updated. Please try again later.' });
     }
 }

@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import styles from './style';
-import { useSelector, useDispatch } from 'react-redux';
 import { Icon } from 'react-native-eva-icons';
 import { primary, white } from '../../assets/colors';
-import { setInitialPage } from '../../redux/actions/posts';
 import { useNavigation } from '@react-navigation/native';
 
 
-const SelecteableTabs = () => {
-    const dispatch = useDispatch();
+const SelecteableTabs = ({ newRef }) => {
+    const [initialPage, setInitialPage] = useState(0);
     const navigation = useNavigation();
-    const { initialPage } = useSelector(state => state.postsReducer);
+
     const tabs = [
         { title: "Following", id: 0 },
         { title: "Local", id: 1 },
@@ -23,7 +21,8 @@ const SelecteableTabs = () => {
             navigation.navigate('Search');
             return false;
         }
-        dispatch(setInitialPage(item.id));
+        newRef?.current?.snapToItem(item.id);
+        setInitialPage(item.id);
     }
 
     return (

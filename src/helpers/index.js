@@ -1,26 +1,13 @@
 import axios from 'axios';
-import ImagePicker from 'react-native-image-crop-picker';
-import Geolocation from '@react-native-community/geolocation';
+import { launchImageLibrary } from 'react-native-image-picker';
 import { BASE_URL } from '@env'
 
 async function changeProfileImage(userId) {
     try {
-        const picker = await ImagePicker.openPicker({
-            cropperCircleOverlay: true,
-            freeStyleCropEnabled: true,
-            avoidEmptySpaceAroundImage: true,
-            cropperToolbarTitle: "Select Avatar",
-            loadingLabelText: "Loading...",
-            cropperChooseText: "Select",
-            cropperCancelText: "Cancel",
-            mediaType: "photo",
-            cropping: true,
+        const picker = await launchImageLibrary({
+            mediaType: 'photo',
             includeBase64: true,
-            width: 500,
-            height: 500,
-            compressImageQuality: 0.5,
-            compressImageMaxHeight: 500,
-            compressImageMaxWidth: 500
+            selectionLimit: 1
         });
 
         const response = await axios.post(`${BASE_URL}/user/uploadAvatar`, {
@@ -28,29 +15,6 @@ async function changeProfileImage(userId) {
             userId
         });
         return response;
-    } catch (error) {
-        return error;
-    }
-}
-
-async function updateLocation(userId) {
-    try {
-        const getPosition = await Geolocation.getCurrentPosition(
-            position => {
-                const { latitude, longitude } = position.coords;
-
-                console.log({ latitude, longitude })
-                return { latitude, longitude };
-                // return axios.post(`${BASE_URL}/auth/updateLocation?id=${userId}`, {
-                //     latitude,
-                //     longitude
-                // });
-            },
-            error => {
-                return error;
-            }
-        );
-        return getPosition;
     } catch (error) {
         return error;
     }
@@ -102,7 +66,6 @@ function makeNumbersFriendly(num) {
 
 export {
     changeProfileImage,
-    updateLocation,
     getUserData,
     checkUsername,
     getFollowings,

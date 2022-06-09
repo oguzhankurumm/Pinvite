@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { userAuthStateListener } from '../../redux/actions/auth';
 
 // IMPORT ALL PAGES
+import Loading from '../../components/loading';
 import HeaderBackImage from '../../assets/images/headerBackButton.svg';
 import HorizontalLogo from '../../assets/images/logo-horizontal.png';
 import HomeScreen from '../home';
@@ -15,6 +16,7 @@ import Welcome from '../../screens/auth/welcome';
 import Register from '../../screens/auth/register';
 import EditProfile from '../../screens/main/edit-profile';
 import UserProfile from '../../screens/main/user-profile';
+import PostScreen from '../../screens/main/post-screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,11 +29,7 @@ export default function Route() {
     }, [])
 
     if (!currentUserObj.loaded) {
-        return (
-            <View style={{ flex: 1, height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-                <Text>Loading...</Text>
-            </View>
-        )
+        return <Loading />
     }
 
     const headerProps = { backgroundColor: backgroundColor }
@@ -101,6 +99,17 @@ export default function Route() {
                                 headerBackTitleVisible: false,
                                 headerTintColor: headerTintColor,
                                 gestureEnabled: false
+                            })}
+                        />
+                        <Stack.Screen name="PostScreen" component={PostScreen}
+                            options={({ route, navigation }) => ({
+                                headerTitle: () => <HeaderLogo />,
+                                headerStyle: { ...headerProps },
+                                headerShadowVisible: false,
+                                headerBackTitleVisible: false,
+                                headerTintColor: headerTintColor,
+                                gestureEnabled: true,
+                                headerShown: false
                             })}
                         />
                         <Stack.Screen name="EditProfile" component={EditProfile}

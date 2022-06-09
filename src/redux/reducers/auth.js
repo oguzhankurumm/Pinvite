@@ -15,7 +15,10 @@ import {
     UPDATE_PROFILE_FAILED,
     DELETE_ACCOUNT_START,
     DELETE_ACCOUNT_SUCCESS,
-    DELETE_ACCOUNT_FAILED
+    DELETE_ACCOUNT_FAILED,
+    UPDATE_LOCATION_START,
+    UPDATE_LOCATION_SUCCESS,
+    UPDATE_LOCATION_FAILED
 } from "../constants/auth";
 
 const initialState = {
@@ -141,6 +144,26 @@ const auth = (state = initialState, action) => {
                 currentUser: null
             }
         case DELETE_ACCOUNT_FAILED:
+            return {
+                ...state,
+                changeLoading: false,
+                message: action.message
+            }
+        case UPDATE_LOCATION_START:
+            return {
+                ...state,
+                changeLoading: true
+            }
+        case UPDATE_LOCATION_SUCCESS:
+            return {
+                ...state,
+                changeLoading: false,
+                currentUser: {
+                    ...state.currentUser,
+                    location: action.location
+                }
+            }
+        case UPDATE_LOCATION_FAILED:
             return {
                 ...state,
                 changeLoading: false,

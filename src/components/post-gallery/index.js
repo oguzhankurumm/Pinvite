@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableWithoutFeedback } from 'react-native';
+import { Image, TouchableWithoutFeedback } from 'react-native';
 import styles from './style';
 
 export const PostGallery = ({ post }) => {

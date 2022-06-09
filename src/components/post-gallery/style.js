@@ -7,8 +7,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     image: {
-        width: Dimensions.get('window').width / 3.5,
-        height: Dimensions.get('window').width / 3.5,
+        width: Dimensions.get('window').width / 3.3,
+        height: Dimensions.get('window').width / 3.3,
     }
 });
 

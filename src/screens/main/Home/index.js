@@ -1,13 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { View, Text, FlatList, SafeAreaView, RefreshControl, ScrollView } from 'react-native'
+import { View, Text, FlatList, SafeAreaView, RefreshControl, ScrollView, Dimensions } from 'react-native'
 import styles from './style';
-import PagerView from 'react-native-pager-view';
-import { updateLocation } from '../../../helpers';
 import { useDispatch, useSelector } from 'react-redux';
 import SelecteableTabs from '../../../components/selectable-tabs';
 import PostSingle from '../../../components/post-single';
-import { getFollowingUserPosts } from '../../../redux/actions/posts';
+import { getFollowingUserPosts, getLocalPost } from '../../../redux/actions/posts';
 import UserCard from '../../../components/user-card';
+import { updateCurrentLocation } from '../../../redux/actions/auth';
+import Geolocation from '@react-native-community/geolocation';
+import Carousel from 'react-native-snap-carousel';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -15,9 +16,9 @@ const Home = () => {
   const { followings, mostFollowedUsers } = useSelector(state => state.userReducer);
   const { followingUserPosts, localPosts, initialPage } = useSelector(state => state.postsReducer);
   const [refreshing, setRefreshing] = useState(false);
-
   const mediaRefs = useRef([]);
   const refPagerView = useRef();
+  const pages = [0, 1]
 
   const onViewableItemsChanged = useRef(({ changed }) => {
     changed.forEach(element => {
@@ -32,20 +33,41 @@ const Home = () => {
     })
   });
 
-  const renderItem = ({ item, index }) => {
+  const getCurrentLocation = async () => {
+    await Geolocation.getCurrentPosition(
+      position => {
+        const location = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        }
+        dispatch(updateCurrentLocation({ location, userId: currentUser._id }));
+        dispatch(getLocalPost(location));
+      },
+      error => {
+        console.log('hata', error)
+        return error;
+      }
+    );
+
+  }
+
+  useEffect(() => {
+    getCurrentLocation();
+  }, [])
+
+  const postSingleView = ({ item, index }) => {
     return (
-      <View key={item._id} style={[{ flex: 1, height: '100%' }, index % 2 == 0 ? { backgroundColor: 'blue' } : { backgroundColor: 'pink' }]}>
-        <PostSingle
-          ref={postSingleRef => (mediaRefs.current[item.id] = postSingleRef)}
-          item={item}
-        />
-      </View >
+      <PostSingle
+        ref={postSingleRef => (mediaRefs.current[item.id] = postSingleRef)}
+        item={item}
+      />
     )
   };
 
   const onRefresh = async () => {
     setRefreshing(true);
     await dispatch(getFollowingUserPosts(followings))
+    await dispatch(getLocalPost(currentUser.location))
     setRefreshing(false);
   }
 
@@ -70,9 +92,9 @@ const Home = () => {
     </View>
   )
 
-  const FollowingPostsPage = () => (
+  const PostFlatlist = ({ data, renderItem }) => (
     <FlatList
-      data={followingUserPosts}
+      data={data}
       refreshControl={
         <RefreshControl
           refreshing={refreshing}
@@ -80,56 +102,46 @@ const Home = () => {
         />
       }
       windowSize={4}
+      contentContainerStyle={{ paddingBottom: data.length > 1 ? 170 : 0 }}
       initialNumToRender={0}
       maxToRenderPerBatch={2}
+      snapToInterval={Dimensions.get("window").height - 126}
+      snapToAlignment="start"
       removeClippedSubviews
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}
       viewabilityConfig={{
         itemVisiblePercentThreshold: 100
       }}
       renderItem={renderItem}
       pagingEnabled
       keyExtractor={item => item._id}
-      decelerationRate="normal"
-      onViewableItemsChanged={onViewableItemsChanged.current}
-    />
-  )
-
-  const LocalPostsPage = () => (
-    <FlatList
-      data={localPosts}
-      refreshControl={
-        <RefreshControl
-          refreshing={refreshing}
-          onRefresh={onRefresh}
-        />
-      }
-      windowSize={4}
-      initialNumToRender={0}
-      maxToRenderPerBatch={2}
-      removeClippedSubviews
-      viewabilityConfig={{
-        itemVisiblePercentThreshold: 100
-      }}
-      renderItem={renderItem}
-      pagingEnabled
-      keyExtractor={item => item._id}
-      decelerationRate="normal"
+      decelerationRate="fast"
       onViewableItemsChanged={onViewableItemsChanged.current}
     />
   )
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ height: '100%', width: '100%' }}>
-        <SelecteableTabs />
-        <PagerView
-          ref={refPagerView}
-          initialPage={initialPage}
+      <View style={{ flex: 1, height: '100%', width: '100%' }}>
+        <SelecteableTabs newRef={refPagerView} />
+        <Carousel
           scrollEnabled={false}
-        >
-          {followings.length < 5 ? <FollowPage /> : <FollowingPostsPage />}
-          <LocalPostsPage />
-        </PagerView>
+          ref={refPagerView}
+          newRef={refPagerView}
+          data={pages}
+          renderItem={({ item, index }) => {
+            if (index === 0) {
+              return <PostFlatlist data={followingUserPosts} renderItem={postSingleView} />
+            }
+            return <PostFlatlist data={localPosts} renderItem={postSingleView} />
+          }}
+          sliderWidth={Dimensions.get("window").width}
+          itemWidth={Dimensions.get("window").width}
+          layout={'default'}
+          style={{ paddingHorizontal: 10 }}
+          removeClippedSubviews={false}
+        />
       </View>
     </SafeAreaView>
   )

@@ -8,7 +8,13 @@ const styles = StyleSheet.create({
         height: '100%',
         backgroundColor: dark,
         padding: 15
-    }
+    },
+    galleryContainer: {
+        flex: 1,
+        width: '100%',
+        height: '100%'
+    },
+
 });
 
 export default styles;

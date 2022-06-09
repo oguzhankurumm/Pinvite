@@ -2,13 +2,14 @@ import {
     GET_FOLLOWINGS_USER_POSTS_START,
     GET_FOLLOWINGS_USER_POSTS_SUCCESS,
     GET_FOLLOWINGS_USER_POSTS_FAILED,
-    SET_INITIAL_PAGE,
+    GET_LOCAL_POSTS_START,
+    GET_LOCAL_POSTS_SUCCESS,
+    GET_LOCAL_POSTS_FAILED,
 } from "../constants/posts";
 
 const initialState = {
     followingUserPosts: [],
     localPosts: [],
-    initialPage: 0,
     loaded: false,
     message: '',
 }
@@ -34,10 +35,24 @@ const posts = (state = initialState, action) => {
                 loaded: true,
                 message: action.message,
             }
-        case SET_INITIAL_PAGE:
+        case GET_LOCAL_POSTS_START:
             return {
                 ...state,
-                initialPage: action.page,
+                loaded: false,
+                message: '',
+            }
+        case GET_LOCAL_POSTS_SUCCESS:
+            return {
+                ...state,
+                localPosts: action.localPosts,
+                loaded: true,
+                message: '',
+            }
+        case GET_LOCAL_POSTS_FAILED:
+            return {
+                ...state,
+                loaded: true,
+                message: action.message,
             }
         default:
             return state;

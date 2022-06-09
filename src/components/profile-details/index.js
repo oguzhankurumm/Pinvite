@@ -11,7 +11,7 @@ const ProfileDetails = ({ userId, name, username, image, bio, followersCount, fo
     const navigation = useNavigation();
     const { currentUser } = useSelector(state => state.authReducer);
     const isCurrentUser = currentUser._id === userId;
-    const { following } = useSelector(state => state.userReducer);
+    const { followings } = useSelector(state => state.userReducer);
 
     return (
         <View style={styles.container}>
@@ -36,7 +36,7 @@ const ProfileDetails = ({ userId, name, username, image, bio, followersCount, fo
                                     start={{ x: -0.9, y: 0.2 }}
                                     end={{ x: 0.45, y: 1.0 }}
                                 >
-                                    <Text style={styles.followButtonText}>{following.find(id => id._id === userId) ? "Unfollow" : "Follow"}</Text>
+                                    <Text style={styles.followButtonText}>{followings.find(id => id._id === userId) ? "Unfollow" : "Follow"}</Text>
                                 </LinearGradient>
                             </Pressable>
                         }

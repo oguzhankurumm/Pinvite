@@ -244,16 +244,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>RNImageCropPicker-QBImagePicker.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>RNImageCropPicker.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>RNPermissions.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -399,12 +389,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>TOCropViewController-TOCropViewControllerBundle.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>TOCropViewController.xcscheme</key>
+		<key>VisionCamera.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -480,6 +465,11 @@
 			<false/>
 		</dict>
 		<key>react-native-geolocation.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>react-native-image-picker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

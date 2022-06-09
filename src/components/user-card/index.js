@@ -13,6 +13,7 @@ const UserCard = ({ user }) => {
     const dispatch = useDispatch();
     const { followings } = useSelector(state => state.userReducer);
     const { currentUser } = useSelector(state => state.authReducer);
+    // console.log('followings:', followings);
     const [Followed, setFollowed] = useState(followings.find(id => id._id === user._id) ? true : false);
     console.log(Followed)
 
@@ -34,24 +35,24 @@ const UserCard = ({ user }) => {
 
     return (
         <View style={styles.container}>
-                <Pressable onPress={seeProfile}>
-                    <Image
-                        style={styles.image}
-                        source={{ uri: user.image }}
-                        resizeMode="cover"
-                    />
-                </Pressable>
-                <Text style={styles.name}>{user.name}</Text>
-                <Pressable onPress={followFunction}>
-                    <LinearGradient
-                        colors={[gradient1, gradient2]}
-                        style={styles.followButton}
-                        start={{ x: -0.9, y: 0.2 }}
-                        end={{ x: 0.45, y: 1.0 }}
-                    >
-                        <Text style={styles.followButtonText}>{Followed ? "Unfollow" : "Follow"}</Text>
-                    </LinearGradient>
-                </Pressable>
+            <Pressable onPress={seeProfile}>
+                <Image
+                    style={styles.image}
+                    source={{ uri: user.image }}
+                    resizeMode="cover"
+                />
+            </Pressable>
+            <Text style={styles.name}>{user.name}</Text>
+            <Pressable onPress={followFunction}>
+                <LinearGradient
+                    colors={[gradient1, gradient2]}
+                    style={styles.followButton}
+                    start={{ x: -0.9, y: 0.2 }}
+                    end={{ x: 0.45, y: 1.0 }}
+                >
+                    <Text style={styles.followButtonText}>{Followed ? "Unfollow" : "Follow"}</Text>
+                </LinearGradient>
+            </Pressable>
         </View>
     )
 }

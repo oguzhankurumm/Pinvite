@@ -10,3 +10,4 @@ export const gradient1 = '#F9F90E';
 export const gradient2 = '#FF3960';
 export const gradient3 = '#FD913B'
 export const backgroundColor = '#fff'
+export const onlineColor = '#D4E160';
