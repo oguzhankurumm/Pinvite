@@ -102,7 +102,6 @@ const Home = () => {
         />
       }
       windowSize={4}
-      contentContainerStyle={{ paddingBottom: data.length > 1 ? 170 : 0 }}
       initialNumToRender={0}
       maxToRenderPerBatch={2}
       snapToInterval={Dimensions.get("window").height - 126}

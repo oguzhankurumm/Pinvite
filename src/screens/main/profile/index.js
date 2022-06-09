@@ -25,6 +25,7 @@ const Profile = ({ navigation }) => {
       />
       <View style={styles.galleryContainer}>
         <FlatList
+          scrollEnabled={false}
           data={posts}
           horizontal={false}
           renderItem={({ item }) => <PostGallery key={item._id} post={item} />}
