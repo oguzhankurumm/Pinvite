@@ -1,0 +1,28 @@
+{
+  "name": "react-native-video-cache",
+  "version": "2.7.3",
+  "summary": "Boost performance on online video loading and caching",
+  "description": "react-native-video-cache",
+  "homepage": "https://github.com/zhigang1992/react-native-video-cache",
+  "license": "MIT",
+  "authors": {
+    "Kyle Fang": "zhigang1992@gmail.com"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/zhigang1992/react-native-video-cache.git",
+    "tag": "2.7.3"
+  },
+  "source_files": "ios/**/*.{h,m,swift}",
+  "requires_arc": true,
+  "dependencies": {
+    "React": [
+
+    ],
+    "KTVHTTPCache": [
+      "~> 2.0.0"
+    ]
+  }
+}

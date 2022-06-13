@@ -1,9 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Alert, Image, Pressable } from 'react-native'
 import styles from './style';
 import MiniHeader from '../../../components/mini-header';
 import CameraControls from '../../../components/camera-controls';
 import { Camera, useCameraDevices, PhotoFile, VideoFile } from 'react-native-vision-camera';
+import Video from 'react-native-video';
+import { createThumbnail } from "react-native-create-thumbnail";
+import { Icon } from 'react-native-eva-icons';
+import { white } from '../../../assets/colors';
 
 const UploadScreen = ({ navigation }) => {
   const devices = useCameraDevices()
@@ -12,37 +16,46 @@ const UploadScreen = ({ navigation }) => {
   const [isCameraPermitted, setIsCameraPermitted] = useState(false);
   const [isMicrophonePermitted, setIsMicrophonePermitted] = useState(false);
   const [isPostMode, setIsPostMode] = useState(true);
+  const [mediaType, setMediaType] = useState("post");
   const [Recording, setRecording] = useState(false);
+  const [selectedMedia, setSelectedMedia] = useState('');
+  const [thumbnail, setThumbnail] = useState(null);
+  const [muted, setMuted] = useState(false);
+  const [paused, setPaused] = useState(false);
 
-  const checkPermissions = async () => {
-    const cameraPermission = await Camera.getCameraPermissionStatus()
-    const microphonePermission = await Camera.getMicrophonePermissionStatus()
-    if (cameraPermission === 'authorized' && microphonePermission === 'authorized') {
-      setIsCameraPermitted(true);
-      setIsMicrophonePermitted(true);
+  useEffect(() => {
+    (async () => {
+      const cameraStatus = await Camera.getCameraPermissionStatus();
+      setIsCameraPermitted(cameraStatus === 'authorized');
+
+      const microphoneStatus = await Camera.getMicrophonePermissionStatus();
+      setIsMicrophonePermitted(microphoneStatus === 'authorized');
+    })
+  }, [])
+
+
+  const onSelectAsset = async item => {
+    setSelectedMedia(item[0])
+    if (item[0].type.includes("video")) {
+      setMediaType("video");
+      const getThumbnail = await createThumbnail({
+        url: item[0].uri,
+        timeStamp: 1000
+      })
+      setThumbnail(getThumbnail)
     } else {
-      const newCameraPermission = await Camera.requestCameraPermission()
-      const newMicrophonePermission = await Camera.requestMicrophonePermission()
-      if (newCameraPermission === 'authorized' && newMicrophonePermission === 'authorized') {
-        setIsCameraPermitted(true);
-        setIsMicrophonePermitted(true);
-      } else {
-        setIsCameraPermitted(false);
-        setIsMicrophonePermitted(false);
-      }
+      setMediaType("image")
+      setThumbnail(null);
     }
-  }
-
-  const onSelectAsset = item => {
-    console.log(item[0])
-    navigation.navigate('PostScreen', { selectedMedia: item[0] })
   }
 
   const takePhoto = async () => {
     const photo = await camera.current.takePhoto({
       quality: 100
     })
-    console.log(photo)
+    setSelectedMedia(photo);
+    setMediaType("image");
+    setThumbnail(null);
   }
 
   const startRecording = async () => {
@@ -55,35 +68,71 @@ const UploadScreen = ({ navigation }) => {
 
   const stopRecording = async () => {
     setRecording(false)
-    camera.current.stopRecording()
+    camera.current.stopRecording();
   }
 
-  useEffect(() => {
-    checkPermissions()
-  }, []);
+  const onPostPressed = () => {
+    if (!selectedMedia) {
+      return Alert.alert('Please select a media')
+    }
+    setMuted(true);
+    navigation.navigate('PostScreen', { selectedMedia, isPostMode, thumbnail, mediaType })
+  }
 
   return (
     <View style={styles.container}>
       <MiniHeader
         onLeftPress={null}
+        onRightPress={onPostPressed}
         hideLeftButton
       />
-      {isCameraPermitted && device ?
-        <Camera
-          ref={camera}
-          style={styles.camera}
-          device={device}
-          isActive={true}
-          photo={true}
-          video={true}
-          audio={isMicrophonePermitted}
-          enableZoomGesture
-        />
+      {selectedMedia ?
+        <>
+          {mediaType === "image" ?
+            <Image
+              source={{ uri: selectedMedia.uri }}
+              style={styles.image}
+              resizeMode="cover"
+            />
+            :
+            <View style={styles.image}>
+              <Pressable style={styles.image} onPress={() => setPaused(!paused)}>
+                <Video
+                  source={selectedMedia}
+                  style={styles.image}
+                  repeat={true}
+                  paused={paused}
+                  muted={muted}
+                  resizeMode="contain"
+                />
+              </Pressable>
+              <Pressable style={styles.rightIconsContainer}>
+                <Icon onPress={() => setMuted(!muted)} name={!muted ? "volume-up-outline" : "volume-off-outline"} width={28} height={28} fill={white} />
+              </Pressable>
+            </View>
+          }
+        </>
         :
-        <View style={styles.camera}>
-          <Text style={styles.text}>No camera detected.{"\n"}Please check camera & microphone permissions.</Text>
-        </View>
+        <>
+          {isCameraPermitted && device ?
+            <Camera
+              ref={camera}
+              style={styles.camera}
+              device={device}
+              isActive={true}
+              photo={true}
+              video={true}
+              audio={isMicrophonePermitted}
+              enableZoomGesture
+            />
+            :
+            <View style={styles.camera}>
+              <Text style={styles.text}>No camera detected.{"\n"}Please check camera & microphone permissions.</Text>
+            </View>
+          }
+        </>
       }
+
       <CameraControls
         isPostMode={isPostMode}
         setIsPostMode={setIsPostMode}

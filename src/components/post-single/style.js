@@ -69,6 +69,23 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         color: white
     },
+    nameContainer: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    followButton: {
+        marginLeft: 10,
+        paddingHorizontal: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 15.5,
+    },
+    followButtonText: {
+        fontFamily: regularText,
+        fontSize: 13,
+        color: white
+    },
     date: {
         fontFamily: regularText,
         color: white,

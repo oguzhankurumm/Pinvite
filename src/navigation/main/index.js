@@ -4,7 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { dark, backgroundColor, black } from '../../assets/colors';
 import { useSelector, useDispatch } from 'react-redux';
-import { userAuthStateListener } from '../../redux/actions/auth';
+import { logout, userAuthStateListener } from '../../redux/actions/auth';
+import { navigationRef } from '../../helpers/navigationService';
 
 // IMPORT ALL PAGES
 import Loading from '../../components/loading';
@@ -14,9 +15,14 @@ import HomeScreen from '../home';
 import Login from '../../screens/auth/login';
 import Welcome from '../../screens/auth/welcome';
 import Register from '../../screens/auth/register';
+import SelectUsername from '../../screens/auth/username';
 import EditProfile from '../../screens/main/edit-profile';
 import UserProfile from '../../screens/main/user-profile';
 import PostScreen from '../../screens/main/post-screen';
+import Modal from '../../modals/BottomSheet';
+import ChatScreen from '../../screens/main/chat-screen';
+import SelectPeople from '../../screens/main/select-people';
+import PostSinglePage from '../../screens/main/post-single';
 
 const Stack = createNativeStackNavigator();
 
@@ -49,8 +55,8 @@ export default function Route() {
     )
 
     return (
-        <NavigationContainer>
-            <Stack.Navigator initialRouteName='Onboard' >
+        <NavigationContainer ref={navigationRef}>
+            <Stack.Navigator initialRouteName='Welcome' >
                 {currentUserObj.currentUser === null ?
                     <>
                         <Stack.Screen name="Welcome" component={Welcome}
@@ -87,6 +93,17 @@ export default function Route() {
                                 gestureEnabled: true,
                             })}
                         />
+                        <Stack.Screen name="SelectUsername" component={SelectUsername}
+                            options={({ route, navigation }) => ({
+                                headerTitle: '',
+                                headerStyle: { ...headerProps },
+                                headerLeft: () => <HeaderBackButton navigation={navigation} />,
+                                headerShadowVisible: false,
+                                headerBackTitleVisible: false,
+                                headerTintColor: headerTintColor,
+                                gestureEnabled: false,
+                            })}
+                        />
                     </>
                     :
                     <>
@@ -112,6 +129,28 @@ export default function Route() {
                                 headerShown: false
                             })}
                         />
+                        <Stack.Screen name="SelectPeople" component={SelectPeople}
+                            options={({ route, navigation }) => ({
+                                headerTitle: 'Select People',
+                                headerStyle: { ...headerProps },
+                                headerShadowVisible: false,
+                                headerBackTitleVisible: false,
+                                headerTintColor: headerTintColor,
+                                gestureEnabled: true,
+                                headerShown: true
+                            })}
+                        />
+                        <Stack.Screen name="ChatScreen" component={ChatScreen}
+                            options={({ route, navigation }) => ({
+                                headerTitle: () => <HeaderLogo />,
+                                headerStyle: { ...headerProps },
+                                headerShadowVisible: false,
+                                headerBackTitleVisible: false,
+                                headerTintColor: headerTintColor,
+                                gestureEnabled: true,
+                                headerShown: true
+                            })}
+                        />
                         <Stack.Screen name="EditProfile" component={EditProfile}
                             options={({ route, navigation }) => ({
                                 headerTitle: () => <HeaderLogo />,
@@ -132,9 +171,20 @@ export default function Route() {
                                 gestureEnabled: true,
                             })}
                         />
+                        <Stack.Screen name="PostSinglePage" component={PostSinglePage}
+                            options={({ route, navigation }) => ({
+                                headerTitle: () => <HeaderLogo />,
+                                headerStyle: { ...headerProps },
+                                headerShadowVisible: false,
+                                headerBackTitleVisible: false,
+                                headerTintColor: headerTintColor,
+                                gestureEnabled: true,
+                            })}
+                        />
                     </>
                 }
             </Stack.Navigator>
+            <Modal />
         </NavigationContainer >
     )
 }

@@ -42,11 +42,11 @@ const ProfileDetails = ({ userId, name, username, image, bio, followersCount, fo
                         }
                     </View>
                     <View style={styles.rightTwo}>
-                        <View styles={styles.followContainer}>
+                        <View style={styles.followersContainer}>
                             <Text style={styles.followCountText}>{makeNumbersFriendly(followersCount)}</Text>
                             <Text style={styles.followText}>Followers</Text>
                         </View>
-                        <View styles={styles.followContainer}>
+                        <View style={styles.followingContainer}>
                             <Text style={styles.followCountText}>{makeNumbersFriendly(followingCount)}</Text>
                             <Text style={styles.followText}>Following</Text>
                         </View>

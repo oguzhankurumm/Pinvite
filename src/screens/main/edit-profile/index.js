@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { View, Text, Image, Pressable, Alert } from 'react-native'
+import { View, Text, Pressable, Alert } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './style';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -9,6 +9,7 @@ import { changeAvatar, deleteAccount, updateProfile } from '../../../redux/actio
 import BorderedButton from '../../../components/bordered-button';
 import CustomInputFloat from '../../../components/custom-input-float';
 import { gray } from '../../../assets/colors';
+import FastImage from 'react-native-fast-image';
 
 const EditProfile = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -92,7 +93,7 @@ const EditProfile = ({ navigation }) => {
       <View style={styles.container}>
         <View style={styles.avatarContainer}>
           <SaveButton />
-          <Image
+          <FastImage
             style={styles.avatar}
             source={currentUser.image ? { uri: currentUser.image } : defaultAvatar}
           />

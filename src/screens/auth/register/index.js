@@ -1,29 +1,52 @@
 import React, { useState, useRef } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Alert } from 'react-native'
 import styles from './style';
 import CustomButton from '../../../components/custom-button';
 import CustomInput from '../../../components/custom-input';
+import { useDispatch } from 'react-redux';
+import { checkRegisterInfo } from '../../../redux/actions/auth';
 
 const Register = ({ navigation }) => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState();
+  const [name, setName] = useState();
   const [password, setPassword] = useState();
+  const nameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
   const handleSubmit = () => {
-    console.log('email: ', email);
-    console.log('password: ', password);
+      if (!name || !email || !password) {
+        return Alert.alert('Missing Fields', 'Please fill all required fields', [{ text: 'OK' }]);
+      }
+      dispatch(checkRegisterInfo({email, name, password}));
   }
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Register</Text>
       <CustomInput
-        inputRef={emailInputRef}
+      autoCapitalize="words"
+        label="Name"
+        inputRef={nameInputRef}
         autoFocus={true}
+        onChangeText={setName}
+        value={name}
+        placeholder="John Doe"
+        onFocus={() => nameInputRef.current?.focus()}
+        onBlur={() => nameInputRef.current?.blur()}
+        keyboardType="default"
+        returnKeyType="next"
+        maxLength={50}
+        onSubmitEditing={() => emailInputRef.current.focus()}
+      />
+      <CustomInput
+        autoCorrect={false}
+        label="Email"
+        inputRef={emailInputRef}
         onChangeText={setEmail}
         value={email}
-        placeholder="jane@example.com"
+        placeholder="email@domain.com"
         onFocus={() => emailInputRef.current?.focus()}
         onBlur={() => emailInputRef.current?.blur()}
         keyboardType="email-address"
@@ -32,6 +55,8 @@ const Register = ({ navigation }) => {
         onSubmitEditing={() => passwordInputRef.current.focus()}
       />
       <CustomInput
+        autoCorrect={false}
+        label="Password"
         inputRef={passwordInputRef}
         onChangeText={setPassword}
         value={password}

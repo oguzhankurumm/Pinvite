@@ -1,8 +1,5 @@
 import axios from 'axios';
 import {
-    GET_MY_POSTS_START,
-    GET_MY_POSTS_SUCCESS,
-    GET_MY_POSTS_FAILED,
     FOLLOW_USER_START,
     FOLLOW_USER_SUCCESS,
     FOLLOW_USER_FAILED,
@@ -21,20 +18,6 @@ import {
     GET_MOST_FOLLOWED_USERS_FAILED
 } from '../constants/user';
 import { BASE_URL } from '@env'
-
-export const getUserPosts = userId => async dispatch => {
-    try {
-        dispatch({ type: GET_MY_POSTS_START });
-        const response = await axios.get(`${BASE_URL}/user/getUserPosts?id=${userId}`);
-        if (response.status === 200) {
-            dispatch({ type: GET_MY_POSTS_SUCCESS, posts: response.data.posts });
-        } else {
-            dispatch({ type: GET_MY_POSTS_FAILED, message: response.data.message });
-        }
-    } catch (error) {
-        dispatch({ type: GET_MY_POSTS_FAILED, message: error });
-    }
-};
 
 export const getFollowers = userId => async dispatch => {
     try {
@@ -87,7 +70,6 @@ export const unfollowUser = ({ userId, id }) => async dispatch => {
     try {
         await dispatch({ type: UNFOLLOW_USER_START });
         const response = await axios.delete(`${BASE_URL}/user/unfollowUser?id=${id}&userId=${userId}`);
-        console.log('status ok', response)
         if (response.status === 200) {
             dispatch({ type: UNFOLLOW_USER_SUCCESS, selectedId: id });
         } else {

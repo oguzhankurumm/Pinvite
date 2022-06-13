@@ -1,11 +1,14 @@
 import React from 'react';
-import { Image, TouchableWithoutFeedback } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native';
 import styles from './style';
+import FastImage from 'react-native-fast-image';
+import { useNavigation } from '@react-navigation/native';
 
 export const PostGallery = ({ post }) => {
+    const navigation = useNavigation();
     return (
-        <TouchableWithoutFeedback style={styles.container}>
-            <Image
+        <TouchableWithoutFeedback style={styles.container} onPress={() => navigation.navigate('PostSinglePage', { post })}>
+            <FastImage
                 source={{ uri: post.type === "image" ? post.media : post.thumbnail }}
                 style={styles.image}
                 resizeMode="cover"

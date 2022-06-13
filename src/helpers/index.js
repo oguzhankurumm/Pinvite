@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { launchImageLibrary } from 'react-native-image-picker';
-import { BASE_URL } from '@env'
+import { BASE_URL } from '@env';
+import storage from '@react-native-firebase/storage';
 
 async function changeProfileImage(userId) {
     try {
@@ -19,6 +20,34 @@ async function changeProfileImage(userId) {
         return error;
     }
 }
+
+const saveMediaToStorage = (media, path) => new Promise((resolve, reject) => {
+    try {
+        const fileRef = storage().ref().child(path);
+
+        fetch(media)
+            .then(res => res.blob())
+            .then(blob => {
+                fileRef.put(blob).then(() => {
+                    fileRef.getDownloadURL().then(url => {
+                        resolve(url);
+                    }).catch(err => {
+                        reject(err);
+                    })
+                }
+                ).catch(err => {
+                    reject(err);
+                })
+            }).catch(err => {
+                reject(err);
+            })
+
+    } catch (error) {
+        console.log('save media error', error);
+        reject(error);
+    }
+
+})
 
 async function getUserData(userId) {
     try {
@@ -64,10 +93,36 @@ function makeNumbersFriendly(num) {
     return intlFormat(num);
 }
 
+async function addComment({ userId, postId, myUserId, comment, addCommentToCommentList }) {
+    try {
+        const response = await axios.put(`${BASE_URL}/posts/addComment`, { userId, postId, myUserId, comment });
+        addCommentToCommentList(response.data.comment);
+        return response;
+    } catch (error) {
+        return error;
+    }
+}
+
+async function getComments({ userId, postId, setCommentList }) {
+    try {
+        const response = await axios.get(`${BASE_URL}/posts/getPostComments?userId=${userId}&postId=${postId}`);
+        if (response.status === 200) {
+            setCommentList(response.data.comments);
+        } else {
+            setCommentList([]);
+        }
+    } catch (error) {
+        return error;
+    }
+}
+
 export {
     changeProfileImage,
     getUserData,
     checkUsername,
     getFollowings,
-    makeNumbersFriendly
+    makeNumbersFriendly,
+    addComment,
+    getComments,
+    saveMediaToStorage
 };

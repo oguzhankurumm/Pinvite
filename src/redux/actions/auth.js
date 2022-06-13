@@ -20,13 +20,19 @@ import {
     UPDATE_LOCATION_START,
     UPDATE_LOCATION_SUCCESS,
     UPDATE_LOCATION_FAILED,
+    CHECK_REGISTER_INFO_START,
+    CHECK_REGISTER_INFO_SUCCESS,
+    CHECK_REGISTER_INFO_FAILED,
 } from '../constants/auth';
 import auth from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getUserData, getFollowings } from '../../helpers'
 import { BASE_URL } from '@env'
-import { getFollowers, getMostFollowedUsers, getUserPosts, setFollowings } from './user';
-import { getFollowingUserPosts } from './posts';
+import { getFollowers, getMostFollowedUsers, setFollowings } from './user';
+import { getFollowingUserPosts, getUserPosts } from './posts';
+import { RESET_CHATS } from '../constants/chat';
+import { RESET_POSTS } from '../constants/posts';
+import { RESET_FOLLOWINGS_AND_FOLLOWERS } from '../constants/user';
 
 export const userAuthStateListener = () => async dispatch => {
     try {
@@ -42,7 +48,7 @@ export const userAuthStateListener = () => async dispatch => {
                 await dispatch(getFollowers(userId));
                 if (getFollowingsUsers.length > 0) {
                     await dispatch(setFollowings(getFollowingsUsers));
-                    await dispatch(getFollowingUserPosts(getFollowingsUsers));
+                    await dispatch(getFollowingUserPosts(getFollowingsUsers, userId));
                 }
                 await dispatch(getMostFollowedUsers());
                 await dispatch(getUserPosts(userId));
@@ -78,6 +84,9 @@ export const loginWithEmailAndPassword = ({ email, password }) => async dispatch
 export const logout = () => async dispatch => {
     try {
         await dispatch({ type: LOGOUT_START });
+        dispatch({ type: RESET_CHATS })
+        dispatch({ type: RESET_POSTS })
+        dispatch({ type: RESET_FOLLOWINGS_AND_FOLLOWERS })
         const keys = await AsyncStorage.getAllKeys();
         await AsyncStorage.multiRemove(keys);
         await auth().signOut();
@@ -88,15 +97,45 @@ export const logout = () => async dispatch => {
     }
 }
 
-export const registerWithEmailAndPassword = data => async dispatch => {
+export const registerWithEmailAndPassword = ({ email, password, name, username }) => async dispatch => {
     try {
-        await dispatch({ type: REGISTER_START });
-        const response = await axios.post(`${BASE_URL}/auth/register`, data);
-        const jsonValue = JSON.stringify({ email: data.email, password: data.password });
-        await AsyncStorage.setItem('@currentUser', jsonValue);
-        dispatch({ type: REGISTER_SUCCESS, currentUser: response.data.user, loaded: true });
+        const response = await axios.post(`${BASE_URL}/auth/register`, {
+            email,
+            password,
+            name,
+            username
+        });
+        if (response.status === 200) {
+            await dispatch({ type: REGISTER_START });
+            const jsonValue = JSON.stringify({ email: email, password: password });
+            await AsyncStorage.setItem('@currentUser', jsonValue);
+            dispatch({ type: REGISTER_SUCCESS, currentUser: response.data.user, loaded: true });
+        } else {
+            dispatch({ type: REGISTER_FAILED, message: response.data.message, loaded: true })
+        }
     } catch (error) {
+        console.log('error', error)
         dispatch({ type: REGISTER_FAILED, message: error.message });
+    }
+}
+
+export const checkRegisterInfo = ({ email, password, name }) => async dispatch => {
+    try {
+        await dispatch({ type: CHECK_REGISTER_INFO_START });
+        const response = await axios.post(`${BASE_URL}/auth/checkRegisterInfo`, {
+            email,
+            password,
+            name
+        });
+        console.log('response', response)
+        if (response.status === 200) {
+            dispatch({ type: CHECK_REGISTER_INFO_SUCCESS, registerInfo: response.data.user, message: response.data.message, changeLoading: false });
+        } else {
+            dispatch({ type: CHECK_REGISTER_INFO_FAILED, message: response.data.message, changeLoading: false });
+        }
+    } catch (error) {
+        console.log('hata', error)
+        dispatch({ type: CHECK_REGISTER_INFO_FAILED, message: error.message, changeLoading: false });
     }
 }
 

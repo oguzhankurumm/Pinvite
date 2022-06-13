@@ -1,0 +1,1 @@
+../../../../../node_modules/react-native-create-thumbnail/ios/CreateThumbnail.h

@@ -44,10 +44,16 @@ const styles = StyleSheet.create({
     rightTwo: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         alignItems: 'flex-end',
     },
-    followContainer: {
+    followersContainer: {
+        paddingRight: 10,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    followingContainer: {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',

@@ -8,9 +8,12 @@ import styles from './style';
 const UserProfile = ({ route }) => {
   const { user } = route.params;
   const posts = [];
+  
   return (
     <FlatList
-      data={posts}
+      data={posts.sort((a, b) => {
+        return b.createdAt - a.createdAt;
+      })}
       style={styles.container}
       showsHorizontalScrollIndicator={false}
       showsVerticalScrollIndicator={false}
@@ -23,8 +26,6 @@ const UserProfile = ({ route }) => {
           name={user.name ? user.name : 'Name'}
           username={user.username ? user.username : 'username'}
           bio={user.bio ? user.bio : 'User Bio'}
-          followers={user.followers !== undefined ? user.followers.length : 0}
-          following={user.followings !== undefined ? user.followings.length : 0}
           followersCount={user.followersCount !== undefined ? user.followersCount : 0}
           followingCount={user.followingCount !== undefined ? user.followingCount : 0}
         />
@@ -32,7 +33,7 @@ const UserProfile = ({ route }) => {
       keyExtractor={(item, index) => index.toString()}
       renderItem={({ item }) => {
         return (
-          <PostGallery post={item} />
+          <PostGallery key={item._id} post={item} />
         )
       }}
     />

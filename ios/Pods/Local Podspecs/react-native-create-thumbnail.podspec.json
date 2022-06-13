@@ -1,0 +1,28 @@
+{
+  "name": "react-native-create-thumbnail",
+  "version": "1.5.1",
+  "summary": "iOS/Android thumbnail generator with support for both local and remote videos",
+  "description": "react-native-create-thumbnail",
+  "homepage": "https://github.com/souvik-ghosh/react-native-create-thumbnail",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Souvik": "emailtosvk@gmail.com"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/souvik-ghosh/react-native-create-thumbnail.git",
+    "tag": "1.5.1"
+  },
+  "source_files": "ios/**/*.{h,m,swift}",
+  "requires_arc": true,
+  "dependencies": {
+    "React-Core": [
+
+    ]
+  }
+}

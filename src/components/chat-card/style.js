@@ -4,16 +4,13 @@ import { regularText, semiBoldText } from '../../assets/fonts';
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
-        paddingHorizontal: 15
-    },
-    subContainer: {
         flexDirection: 'row',
         width: '100%',
         backgroundColor: white,
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingVertical: 15
+        paddingVertical: 10,
+        paddingHorizontal: 15
     },
     divider: {
         backgroundColor: gray,
@@ -30,40 +27,40 @@ const styles = StyleSheet.create({
         color: dark,
     },
     msg: {
-        marginTop: 5,
+        marginTop: 3,
         fontFamily: regularText,
-        fontSize: 14,
+        fontSize: 13,
         color: black
-    },
-    time: {
-        fontFamily: regularText,
-        fontSize: 14,
-        color: black,
-        marginBottom: 5,
     },
     avatarContainer: {
         justifyContent: 'center',
         alignItems: 'center'
     },
     avatar: {
-        height: 70,
-        width: 70,
+        height: 60,
+        width: 60,
         borderRadius: 50,
         borderColor: primary,
         borderWidth: 2
     },
     dateContainer: {
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: 'flex-start',
+        alignItems: 'flex-end'
+    },
+    time: {
+        fontFamily: regularText,
+        fontSize: 12,
+        color: gray,
+        marginBottom: 5,
     },
     onlineStatus: {
-        position:'absolute',
+        position: 'absolute',
         backgroundColor: onlineColor,
-        right:-2,
-        bottom:12,
+        right: -2,
+        bottom: 12,
         width: 12,
         height: 12,
-        borderRadius:50
+        borderRadius: 50
     }
 });
 

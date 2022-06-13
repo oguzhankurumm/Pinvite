@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     followButton: {
-        paddingVertical: 4,
+        height: 28,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 11,

@@ -2,6 +2,7 @@ import React from 'react';
 import { LogBox, StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
+import { Provider as PaperProvider } from 'react-native-paper';
 import LoadingModal from './src/modals/LoadingModal';
 import Route from './src/navigation/main';
 import store from './src/redux/store';
@@ -13,8 +14,10 @@ const App = () => {
     <SafeAreaProvider>
       <StatusBar barStyle='dark-content' />
       <Provider store={store}>
-        <LoadingModal />
-        <Route />
+        <PaperProvider>
+          <LoadingModal />
+          <Route />
+        </PaperProvider>
       </Provider>
     </SafeAreaProvider>
   );

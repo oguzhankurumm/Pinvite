@@ -1,7 +1,4 @@
 import {
-    GET_MY_POSTS_START,
-    GET_MY_POSTS_SUCCESS,
-    GET_MY_POSTS_FAILED,
     FOLLOW_USER_START,
     FOLLOW_USER_SUCCESS,
     FOLLOW_USER_FAILED,
@@ -18,10 +15,10 @@ import {
     GET_MOST_FOLLOWED_USERS_START,
     GET_MOST_FOLLOWED_USERS_SUCCESS,
     GET_MOST_FOLLOWED_USERS_FAILED,
+    RESET_FOLLOWINGS_AND_FOLLOWERS,
 } from "../constants/user";
 
 const initialState = {
-    posts: [],
     followers: [],
     followings: [],
     mostFollowedUsers: [],
@@ -31,24 +28,13 @@ const initialState = {
 
 const user = (state = initialState, action) => {
     switch (action.type) {
-        case GET_MY_POSTS_START:
+        case RESET_FOLLOWINGS_AND_FOLLOWERS:
             return {
                 ...state,
-                loaded: false,
-                message: '',
-            }
-        case GET_MY_POSTS_SUCCESS:
-            return {
-                ...state,
-                posts: action.posts,
+                followers: [],
+                followings: [],
                 loaded: true,
                 message: '',
-            }
-        case GET_MY_POSTS_FAILED:
-            return {
-                ...state,
-                loaded: true,
-                message: action.message,
             }
         case GET_FOLLOWERS_START:
             return {
@@ -99,10 +85,14 @@ const user = (state = initialState, action) => {
                 loaded: false
             };
         case FOLLOW_USER_SUCCESS:
+            console.log('user', action.user);
+            console.log('defaultusers', state.followings);
+            const newFollowings = [...state.followings, action.user];
+            console.log({ newFollowings })
             return {
                 ...state,
                 loaded: true,
-                followers: state.followers.concat(action.user),
+                followings: newFollowings
             };
         case FOLLOW_USER_FAILED:
             return {
@@ -121,7 +111,7 @@ const user = (state = initialState, action) => {
             return {
                 ...state,
                 loaded: true,
-                followers: filterFollowings,
+                followings: filterFollowings,
             };
         case UNFOLLOW_USER_FAILED:
             return {

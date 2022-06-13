@@ -1,3 +1,5 @@
+import { navigate } from "../../helpers/navigationService";
+import { Alert } from 'react-native';
 import {
     USER_STATE_CHANGE,
     LOGIN_START,
@@ -18,8 +20,12 @@ import {
     DELETE_ACCOUNT_FAILED,
     UPDATE_LOCATION_START,
     UPDATE_LOCATION_SUCCESS,
-    UPDATE_LOCATION_FAILED
+    UPDATE_LOCATION_FAILED,
+    CHECK_REGISTER_INFO_START,
+    CHECK_REGISTER_INFO_SUCCESS,
+    CHECK_REGISTER_INFO_FAILED,
 } from "../constants/auth";
+import FastImage from "react-native-fast-image";
 
 const initialState = {
     currentUser: null,
@@ -65,6 +71,7 @@ const auth = (state = initialState, action) => {
                 currentUser: action.currentUser
             };
         case LOGIN_FAILED:
+            Alert.alert('Error', action.message);
             return {
                 ...state,
                 loaded: true,
@@ -83,12 +90,32 @@ const auth = (state = initialState, action) => {
                 currentUser: action.currentUser
             };
         case REGISTER_FAILED:
+            Alert.alert('Error', action.message);
             return {
                 ...state,
                 loaded: true,
                 currentUser: null,
                 message: action.message
             }
+        case CHECK_REGISTER_INFO_START:
+            return {
+                ...state,
+                changeLoading: true
+            };
+        case CHECK_REGISTER_INFO_SUCCESS:
+            navigate('SelectUsername', { registerInfo: action.registerInfo });
+            return {
+                ...state,
+                changeLoading: false,
+                message: action.message
+            };
+        case CHECK_REGISTER_INFO_FAILED:
+            Alert.alert('Error', action.message);
+            return {
+                ...state,
+                changeLoading: false,
+                message: action.message
+            };
         case LOGOUT_START:
             return {
                 ...state,
@@ -107,6 +134,8 @@ const auth = (state = initialState, action) => {
                 message: action.message
             }
         case CHANGE_PROFILE_PICTURE:
+            FastImage.clearDiskCache();
+            FastImage.clearMemoryCache();
             return {
                 ...state,
                 changeLoading: true,

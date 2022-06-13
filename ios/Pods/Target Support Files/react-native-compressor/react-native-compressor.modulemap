@@ -1,0 +1,6 @@
+module react_native_compressor {
+  umbrella header "react-native-compressor-umbrella.h"
+
+  export *
+  module * { export * }
+}

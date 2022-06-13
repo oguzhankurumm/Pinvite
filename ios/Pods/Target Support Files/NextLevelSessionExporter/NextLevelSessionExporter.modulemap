@@ -1,0 +1,6 @@
+module NextLevelSessionExporter {
+  umbrella header "NextLevelSessionExporter-umbrella.h"
+
+  export *
+  module * { export * }
+}

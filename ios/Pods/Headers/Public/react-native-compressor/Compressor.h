@@ -1,0 +1,1 @@
+../../../../../node_modules/react-native-compressor/ios/Compressor.h

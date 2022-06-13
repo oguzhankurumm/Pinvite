@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { black, gray, lightGray, white } from '../../../assets/colors';
-import { regularText } from '../../../assets/fonts';
+import { black, gray, white } from '../../../assets/colors';
+import { mediumText, regularText } from '../../../assets/fonts';
 
 const styles = StyleSheet.create({
     container: {
@@ -55,6 +55,52 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: gray,
         textAlign: 'left',
+    },
+    switchButton: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginVertical: 6,
+    },
+    switchButtonText: {
+        fontFamily: regularText,
+        fontSize: 14,
+        color: gray,
+        textAlign: 'left',
+    },
+    iconTextContainer: {
+        marginTop: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginVertical: 6,
+    },
+    iconTextContainerTitle: {
+        fontFamily: regularText,
+        fontSize: 14,
+        color: gray,
+        textAlign: 'left',
+    },
+    iconTextRightContainer: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+    },
+    indicator: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    indicatorText: {
+        fontFamily: mediumText,
+        fontSize: 10,
+        color: white,
+        textAlign: 'center',
+        position: 'absolute'
     }
 });
 
